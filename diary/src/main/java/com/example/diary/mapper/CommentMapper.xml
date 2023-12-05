@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.diary.mapper.CommentMapper">
+	<select id="selectCommentList" parameterType="java.util.Map" resultType="com.example.diary.vo.Comment">
+	SELECT
+		comment_no commentNo,
+		member_id memberId,
+		notice_no noticeNo,
+		comment_content commentContent,
+		createdate,
+		is_secret isSecret
+	FROM comment
+	WHERE notice_no = #{noticeNo}
+	LIMIT #{beginRow},#{rowPerPage}
+	</select>
+	<select id="totalPage" parameterType="com.example.diary.vo.Comment" resultType="int">
+	SELECT
+		count(*)
+	FROM comment
+	WHERE notice_no = #{noticeNo}
+	</select>
+	<select id="selectComment" parameterType="com.example.diary.vo.Comment" resultType="com.example.diary.vo.Comment">
+	SELECT
+		comment_no commentNo,
+		member_id memberId,
+		notice_no noticeNo,
+		comment_content commentContent,
+		createdate,
+		is_secret isSecret
+	FROM comment
+	WHERE comment_no = #{commentNo}
+	</select>
+	<update id="updateComment" parameterType="com.example.diary.vo.Comment">
+	UPDATE comment SET
+	comment_content = #{commentContent},
+	is_secret = #{isSecret}
+	WHERE comment_no = #{commentNo}
+	</update>
+	<delete id="deleteComment" parameterType="com.example.diary.vo.Comment">
+	DELETE FROM comment
+	WHERE comment_no = #{commentNo}
+	</delete>
+	<insert id="insertComment" parameterType="com.example.diary.vo.Comment">
+	INSERT INTO comment(
+		member_id,
+		notice_no,
+		comment_content,
+		is_secret
+	) VALUES(
+		#{memberId},
+		#{noticeNo},
+		#{commentContent},
+		#{isSecret}
+	)
+	</insert>
+
+
+</mapper>
