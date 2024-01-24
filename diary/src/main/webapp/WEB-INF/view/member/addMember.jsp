@@ -15,14 +15,45 @@
 <title>회원가입</title>
 <script type="text/javascript" src="${path}/js/jquery-3.7.1.min.js"></script>
 </head>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#idCkBtn').click(function(){
+				console.log('#idCkBtn 클릭!');
+				
+				if($('#memberId').val().length < 4) {
+					alert('3자리이상 아이디를 입력하세요');
+				} else {
+					// DB 없으면 ajax 
+					$.ajax({
+						url:'/diary/member/idCk',
+						method : 'post',
+						data : {'memberId': $('#memberId').val()},
+						success : function(json) {
+							if(json == 0) {
+								alert('사용 가능한 아이디 입니다');
+								
+							} else {
+								alert('중복된 아이디 입니다');
+								$('#memberId').val('');
+							}
+						},
+						error : function(err) {
+							console.log(err);
+						}
+					});
+				}
+				
+			});
+		});
+</script>
 <body>
 	<h1>회원가입</h1>
 	<form id="addForm" method="post" action="${path}/member/addMember">
 		<table border="1">
 			<tr>
 				<td>memberId</td>
-				<td><input type="text" id="memberId" name="memberId"/></td>
+				<td><input type="text" id="memberId" name="memberId"/></td><button type="button" id="idCkBtn">중복확인</button>
 			</tr>
 			<tr>
 				<td>memberPw</td>

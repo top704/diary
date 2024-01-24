@@ -17,6 +17,8 @@ public class MemberService {
 	@Autowired
 	private MemberMapper memberMapper;
 	
+	
+	
 	public Member login(Member paramMember) {
 		Member resultMember = memberMapper.login(paramMember);
 		return resultMember;
@@ -27,6 +29,11 @@ public class MemberService {
 		int resultMember = memberMapper.insertMember(member);
 		return resultMember;
 	}
+	public int idCk(String memberId) {
+		int result = memberMapper.idCk(memberId);
+		return result;
+	}
+	
 	
 	// 회원정보수정
 	public String updateMember(Member member, RedirectAttributes red) {

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.diary.service.CalendarService;
@@ -63,6 +64,13 @@ public class MemberController {
 		}
 		
 		return "redirect:/member/login";
+	}
+	@PostMapping("/member/idCk")
+	@ResponseBody
+	public int idCk(String memberId) {
+		int result = memberService.idCk(memberId);
+		System.out.println(result);
+		return result;
 	}
 	
 	

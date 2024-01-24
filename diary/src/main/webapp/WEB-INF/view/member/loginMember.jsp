@@ -23,11 +23,11 @@
 	<table>
 		<tr>
 			<td>ID<td>
-			<td><input type="text" id="memberId" name="memberId" /></td>
+			<td><input type="text" id="memberId" name="memberId" value="test1"/></td>
 		</tr>
 		<tr>
 			<td>PW<td>
-			<td><input type="text" id="memberPw" name="memberPw" /></td>
+			<td><input type="text" id="memberPw" name="memberPw" value="1234"/></td>
 		</tr>
 	</table>
 	<button type="submit" id="loginBtn">로그인</button>

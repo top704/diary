@@ -13,6 +13,7 @@ public interface MemberMapper {
 	
 	// 회원가입
 	int insertMember(Member member);
+	int idCk(String memberId);
 	
 	int updateMember(Member member);
 	
