@@ -14,7 +14,6 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<script type="text/javascript" src="${path}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 	<h1>로그인</h1>
